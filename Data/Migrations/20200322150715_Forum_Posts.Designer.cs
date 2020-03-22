@@ -4,14 +4,16 @@ using Majestics.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Majestics.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200322150715_Forum_Posts")]
+    partial class Forum_Posts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,7 +175,7 @@ namespace Majestics.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<Guid?>("ChangedByUserId")
+                    b.Property<Guid>("ChangedByUserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ChangedByUserId1")
@@ -191,7 +193,7 @@ namespace Majestics.Data.Migrations
                     b.Property<string>("Data")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("LastChanged")
+                    b.Property<DateTime>("LastChanged")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

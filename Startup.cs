@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Majestics.Data;
 using Majestics.Helpers;
 using Majestics.Models;
+using Majestics.Services.Abstractions;
+using Majestics.Services.Implementations;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -65,6 +68,15 @@ namespace Majestics
                 });
                 c.OperationFilter<AuthenticationRequirementsOperationFilter>();
             });
+
+            RegisterServices(services);
+        }
+
+        private void RegisterServices(IServiceCollection s)
+        {
+            s.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            s.AddTransient<IForumService, ForumService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
