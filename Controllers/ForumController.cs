@@ -23,8 +23,7 @@ namespace Majestics.Controllers
         private readonly IForumService _forumService;
 
         public ForumController(IHttpContextAccessor contextAccessor
-                             , IForumService forumService
-                             , UserManager<ApplicationUser> userManager)
+                             , IForumService forumService)
         {
             _contextAccessor = contextAccessor;
             _forumService = forumService;
@@ -35,18 +34,42 @@ namespace Majestics.Controllers
         /// </summary>
         /// <param name="count"></param>
         /// <returns></returns>
-        [HttpGet("/GetLatestPosts")]
+        [HttpGet("/api/Forum/[action]")]
         public ActionResult GetLatestPosts(int? count)
         {
             return _forumService.GetPosts(count);
         }
 
-        [HttpPost("/AddPost")]
-        public async Task<ActionResult> AddPost(AddPostRequest request)
+        [HttpPut("/api/Forum/[action]")]
+        public async Task<ActionResult> AddPost([FromBody]AddPostRequest request)
         {
             if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 return _forumService.AddPost(request, Guid.Parse(_contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
+            }
+
+            var result = Result.GetResult("Forbidden", HttpStatusCode.Forbidden);
+            return result;
+        }
+
+        [HttpDelete("/api/Forum/[action]")]
+        public async Task<ActionResult> DeletePost(int postId)
+        {
+            if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return _forumService.DeletePost(postId);
+            }
+
+            var result = Result.GetResult("Forbidden", HttpStatusCode.Forbidden);
+            return result;
+        }
+
+        [HttpPost("/api/Forum/[action]")]
+        public async Task<ActionResult> ChangePost([FromBody]EditPostRequest request)
+        {
+            if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return _forumService.ChangePost(request, Guid.Parse(_contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
             }
 
             var result = Result.GetResult("Forbidden", HttpStatusCode.Forbidden);

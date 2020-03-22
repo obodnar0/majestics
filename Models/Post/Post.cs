@@ -1,14 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
 
 namespace Majestics.Models.Post
 {
-    public class Post
+    public class Post : BaseDbModel
     {
-        [Key]
-        public int Id { get; set; }
-
         public DateTime CreationTime { get; set; }
 
         public DateTime? LastChanged { get; set; }

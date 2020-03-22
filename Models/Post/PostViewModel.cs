@@ -4,6 +4,8 @@ namespace Majestics.Models.Post
 {
     public class PostViewModel
     {
+        public int Id { get; set; }
+
         public string Data { get; set; }
 
         public string CreatorName { get; set; }
