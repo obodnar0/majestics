@@ -31,11 +31,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\images\header\popuga.jpg" />
+    <None Remove="ClientApp\src\assets\images\header\head.jpg" />
+    <None Remove="ClientApp\src\assets\images\header\popuga.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="ClientApp\src\images\header\popuga.jpg">
+    <Content Include="ClientApp\src\assets\images\header\head.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ClientApp\src\assets\images\header\popuga.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
