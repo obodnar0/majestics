@@ -101,3 +101,23 @@ btn-hig:active {
   position: relative;
   margin-left: 43%;
 }
+
+img {
+  height: 300px;
+  width: 300px;
+}
+
+.box {
+  list-style: none;
+  width: 33.3%;
+  margin-top: 50px;
+}
+
+.boxes {
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap
+}
+
+

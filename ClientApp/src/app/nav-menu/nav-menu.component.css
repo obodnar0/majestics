@@ -1,4 +1,4 @@
-a.navbar-brand {
+/*a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -20,41 +20,130 @@ html {
 header{
   margin-bottom: 0px;
   padding: 0px;
+} */
+
+
+
+.navigation {
+  width: 100%;
+  height: 60px;
+  background-color: #F2F0E3;
+  color: #2F3435;
 }
 
-/*.navbar, div{
+.navigation, div {
   display: inline-block;
 }
 
-.navbar {
-  width: 100%;
-  height: 60px;
-  background-color: #276b81;
+.hamburger {
+  padding: 15px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
 }
 
-.title {
-  color: floralwhite;
-  text-align: left;
-  margin-top: 15px;
-  margin-left: 15px;
+.hamburger:hover {
+  opacity: 0.7;
 }
 
-.sign_in{
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+
+  .hamburger.is-active .hamburger-inner,
+  .hamburger.is-active .hamburger-inner::before,
+  .hamburger.is-active .hamburger-inner::after {
+    background-color: #A49E9E;
+  }
+
+.hamburger-box {
+  width: 40px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -2px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  width: 40px;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before, .hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+.hamburger--arrow.is-active .hamburger-inner::before {
+  transform: translate3d(-8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+}
+
+.hamburger--arrow.is-active .hamburger-inner::after {
+  transform: translate3d(-8px, 0, 0) rotate(45deg) scale(0.7, 1);
+}
+
+.name{
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-style: @roboto;
+}
+
+.login{
   float: right;
+  margin-right: 50px;
+  margin-top: 15px;
 }
 
-.btn-outline-dark {
-  border-radius: 70px;
-  width: 120px;
-  text-align: center;
-  height: 40px;
-  margin-right: 10px;
-  color: #FFFACD;
-  border-color: darkslategray;
+.registration {
+  border-radius: 50px;
+  border-color: grey;
+  box-shadow: none;
+  background-color: none;
+  width: 100px;
+  color: grey;
 }
 
-.btn-outline-dark:hover{
-  background-color: #adbce6;
-  color: #18404d;
-  border-color: #adbce6;
-}*/
+a{
+  color: black;
+}
+
+.navigation_menu{
+  width: 15%;
+  height: auto;
+}
+
+.navigation_menu:active{
+  
+}
+
+ul{
+  list-style: none;
+}

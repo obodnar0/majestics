@@ -18,9 +18,14 @@
 
 .header_img {
   float: right;
-  margin-right: 150px;
-  margin-top: 50px;
+  margin-left: -20px;
+  margin-top: 10px;
   /*background-image: url(../../images/header/head.jfif);*/
+}
+
+img {
+  width: 500px;
+  height: 400px;
 }
 
 .header_text{
