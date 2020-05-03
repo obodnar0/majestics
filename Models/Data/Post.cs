@@ -10,12 +10,12 @@ namespace Majestics.Models.Post
 
         public string Data { get; set; }
 
-        public Guid CreatedByUserId { get; set; }
+        public string CreatedByUserId { get; set; }
 
-        public Guid? ChangedByUserId { get; set; }
+        public string ChangedByUserId { get; set; }
 
-        public virtual ApplicationUser CreatedByUser { get; set; }
+        public virtual User CreatedByUser { get; set; }
 
-        public virtual ApplicationUser ChangedByUser { get; set; }
+        public virtual User ChangedByUser { get; set; }
     }
 }

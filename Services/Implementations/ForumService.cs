@@ -25,7 +25,7 @@ namespace Majestics.Services.Implementations
                 _dbContext.Posts.Add(new Post
                 {
                     Data = post.Data,
-                    CreatedByUserId = userId,
+                    CreatedByUserId = userId.ToString(),
                     CreationTime = DateTime.Now
                 });
                 _dbContext.SaveChanges();
@@ -97,7 +97,7 @@ namespace Majestics.Services.Implementations
 
                 result.Data = post.Data;
                 result.LastChanged = DateTime.Now;
-                result.ChangedByUserId = userId;
+                result.ChangedByUserId = userId.ToString();
 
                 _dbContext.SaveChanges();
 
