@@ -1,6 +1,6 @@
 .main{
-  margin: 30px;
-  width: 90%;
+  margin: 30px 0;
+  width: 100%;
 }
 
 .title{
@@ -10,56 +10,22 @@
   margin-top: 40px;
 }
 
-/*.btn-hig {
-  background-color: white;
-  color: black;
-  margin-top: 40px;
-  border: none;
-}
-
-btn-hig:active {
-  border-bottom: 2px;
-  border-color: blue;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}
-
-.btn-low {
-  background-color: white;
-  color: black;
-  margin-top: 40px;
-  border: none;
-}
-
-.btn-low:active {
-  border-bottom: 2px;
-  border-color: black;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-}*/
-
-/*.btn-group {
-  margin-top: 20px;
-}
-
-.btn-primary {
-  background-color: white;
-  color: black;
-  border: none;
-}*/
-
 .buttons{
   width: 100%;
 }
 
-.f_button{
-  margin-left: 40%;
+.f_button {
+  /*margin-left: 40%;*/
+  width: 80%;
+  margin: auto;
+  height: auto;
 }
 
 .s_button {
-  margin-left: 34%;
+  /*margin-left: 34%;*/
+  width: 80%;
+  margin: auto;
+  height: auto;
 }
 
 .btn-dark {
@@ -78,9 +44,9 @@ btn-hig:active {
 
 .btn-info {
   border-radius: 70px;
-  margin-top: 15px;
-  width: 170px;
-  height: 40px;
+  margin: auto;
+  width: 15%;
+  height: auto;
   background-color: #2f809a;
   border-color: #2f809a;
   color: white;
@@ -89,11 +55,11 @@ btn-hig:active {
   margin-left: 43%;
 }
 
-.btn-info:hover{
+.btn-info:hover {
   border-radius: 70px;
-  margin-top: 15px;
-  width: 170px;
-  height: 40px;
+  margin: auto;
+  width: 15%;
+  height: auto;
   background-color: #adbce6;
   color: #18404d;
   border-color: #adbce6;
@@ -102,22 +68,84 @@ btn-hig:active {
   margin-left: 43%;
 }
 
-img {
-  height: 300px;
-  width: 300px;
+@media only screen and (max-width: 500px) {
+  .btn-info {
+    height: auto;
+    width: 40%;
+    margin: auto;
+  }
 }
 
-.box {
-  list-style: none;
-  width: 33.3%;
-  margin-top: 50px;
+@media only screen and (max-width: 500px) {
+  .btn-info:hover {
+    margin: auto;
+    height: auto;
+    width: 40%;
+  }
 }
 
-.boxes {
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap
+.images_gallery{
+  width: 80%;
+  height: auto;
+  margin: auto;
 }
 
+div.gallery {
+  /*border: 1px solid white;*/
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+/*_____________________________________________________________________*/
+
+
+
+/*_____________________________________________________________________*/
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+.responsive {
+  padding: 0 6px;
+  margin: 10px;
+  float: left;
+  width: 30.99999%;
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media only screen and (max-width: 1024px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.art_description{
+  text-align: left;
+}
+
+.Author_name{
+  text-align: left;
+}

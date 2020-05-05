@@ -1,94 +1,68 @@
-<!--<header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">Majestics</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <app-login-menu></app-login-menu>
-        <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>-->
 
-
-<!--<header>
-  <div class="navigation">
-    <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
-            aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="dark-blue-text">
-        <i class="fas fa-bars fa-1x"></i>
-      </span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-      </ul>
-    </div>
-    <div class="logo_name">Majestics.</div>
-    <div class="login_button"><button>Реєстрація</button></div>
-  </div>
-</header>-->
-
-<header>
+<nav>
   <div class="navigation">
     <div class="button">
-      <button class="hamburger hamburger--arrow" type="button">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
-      <nav id="navigation">
-        <ul class="nvigation_menu">
-          <li class="navigation_item"><a href="">Головна</a></li>
-          <li class="navigation_item"><a href="">Про конкурс</a></li>
-          <li class="navigation_item"><a href="">Нагородження</a></li>
-          <li class="navigation_item"><a href="">Переможці</a></li>
-        </ul>
+      <nav role="navigation">
+        <div id="menuToggle">
+
+          <input type="checkbox" />
+
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <ul id="menu">
+            <a href="#"><li>Головна</li></a>
+            <a href="./info"><li>Про конкурс</li></a>
+            <a href=""><li>Нагородження</li></a>
+            <a href=""><li>Переможці</li></a>
+          </ul>
+        </div>
       </nav>
     </div>
-    <div class="name">Majestics.</div>
-    <div class="login"><button class="registration">Реєстрація</button></div>
+    <div class="name"><h5>Majestics.</h5></div>
+    <!--<div class="login"><a href="./Identity/Account/Register?returnUrl=/authentication/login"><button type="button" class="btn btn-success">Вхід</button></a></div>-->
+    <button class="buttons" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Вхід</button>
+
+    <div id="id01" class="modal">
+
+      <form class="modal-content animate" action="/action_page.php" method="post">
+
+        <ul class="check">
+          <li class="check_item">
+            <input type="radio" id="f-option" name="selector">
+            <label for="f-option">Учасник</label>
+
+            <div class="check"></div>
+          </li>
+          <li class="check_item">
+            <input type="radio" id="s-option" name="selector">
+            <label for="s-option">Журі</label>
+
+            <div class="check"></div>
+          </li>
+        </ul>
+        
+        <div class="container">
+          <!--<label for="uname"><b>Username</b></label>-->
+          <input type="text" placeholder="Ім'я користувача" name="uname" required>
+
+          <input type="text" placeholder="Логін" name="login" required>
+
+          <!--<label for="psw"><b>Password</b></label>-->
+          <input type="password" placeholder="Пароль" name="psw" required>
+
+          <button class="register" type="submit">Зареєструватись</button>
+          <!--<label>
+            <input class="remember_m" type="checkbox" checked="checked" name="remember"> Запам'ятати мене
+          </label>-->
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Закрити</button>
+          <span class="psw"><a href="#">Нагадати пароль</a></span>
+        </div>
+      </form>
+    </div>
   </div>
-</header>
+</nav>
