@@ -45,7 +45,7 @@
   <ItemGroup>
     <EmbeddedResource Include="ClientApp\src\assets\images\header\popuga.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource
+    </EmbeddedResource>
     <Folder Include="Models\Competition\" />
   </ItemGroup>
 
