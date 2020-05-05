@@ -1,0 +1,124 @@
+.wrapper{
+  margin-bottom: 6%;
+}
+
+.heading{
+  margin-top: 3%;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.wrapper::before {
+  content: '';
+  width: 90%;
+  left: 5%;
+  border-top: 3px solid lightgray;
+  position: absolute;
+}
+
+.title{
+  text-align: center;
+  color: black;
+}
+
+.subheading, div{
+  display: inline-block;
+}
+
+.download_link{
+  color: black;
+}
+
+.left_sub{
+  float: left;
+  /*margin-left: 10%;*/
+}
+
+.left_sub::after {
+  content: '';
+  width: 80%;
+  left: 10%;
+  border-bottom: 3px solid lightgray;
+  position: absolute;
+}
+
+.right_sub {
+  float: right;
+  /*margin-right: 10%;*/
+}
+
+.info_box{
+  width: 80%;
+  margin-left: 10%;
+  padding: initial;
+}
+
+/*.head_info::after {
+  content: '';
+  width: 100%;
+  border-bottom: 1px solid black;
+  position: absolute;
+}*/
+
+.first{
+  margin-top: 3%;
+}
+
+.info_text{
+  margin-top: 3%;
+}
+
+.second_title{
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.second_sub::after {
+  content: '';
+  width: 80%;
+  left: 10%;
+  border-bottom: 3px solid lightgray;
+  position: absolute;
+}
+
+/*.info_participation{
+  margin-top: 5%;
+}*/
+
+.thrd_title {
+  margin-top: 5%;
+  margin-bottom: 3%;
+}
+
+.peovisions{
+  margin-top: 2%;
+}
+
+.animation{
+  margin-top: 3%;
+}
+
+.computer_graphics{
+  margin-top: 3%;
+}
+
+.general_information{
+  margin-top: 5%;
+}
+
+.general_information_block {
+  margin-bottom: 1%;
+}
+
+.evaluation{
+  margin-bottom: 1%;
+  margin-top: 3%;
+}
+
+.evaluation_list{
+  margin-bottom: 1%;
+}
+
+.evaluation_frst{
+  margin-top: 3%;
+}
