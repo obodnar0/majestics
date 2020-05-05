@@ -60,9 +60,9 @@ input[type=text], input[type=password] {
   display: inline-block;
 }
 
-ul li:hover label {
+/*ul li:hover label {
   color: #FFFFFF;
-}
+}*/
 
 .check_item{
   margin-right: 10px;
