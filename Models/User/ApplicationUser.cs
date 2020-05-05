@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Majestics.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual IEnumerable<Post.Post> CreatedPosts { get; set; }
+
+        public virtual IEnumerable<Post.Post> ChangedPosts { get; set; }
     }
 }
