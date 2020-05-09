@@ -22,11 +22,11 @@ namespace Majestics.Services.Implementations
             _dbContext = dbContext;
         }
 
-        public async Task<List<ContestViewModel>> GetContests()
+        public async Task<List<ContestViewModel>> GetAllContestsAsync()
         {
             try
             {
-                return await _dbContext.Contests.Where(x => x.State != ModelState.Deleted)
+                var result = await _dbContext.Contests.Where(x => x.State != ModelState.Deleted)
                     .Select(x => new ContestViewModel
                     {
                         Works = x.Works.Select(q => new WorkViewModel
@@ -48,6 +48,8 @@ namespace Majestics.Services.Implementations
                         Description = x.Description,
                         Title = x.Title
                     }).ToListAsync();
+
+                return result;
             }
             catch (Exception ex)
             {
