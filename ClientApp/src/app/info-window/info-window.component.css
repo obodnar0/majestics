@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
+
+.subtitle {
+  font-family: Chiller;
+}
+
 .wrapper{
   margin-bottom: 6%;
 }
@@ -16,9 +22,10 @@
   position: absolute;
 }
 
-.title{
+.title {
   text-align: center;
   color: black;
+  font-family: 'Bookman Old Style';
 }
 
 .subheading, div{
@@ -27,9 +34,14 @@
 
 .download_link{
   color: black;
+  font-size: 15px;
 }
 
-.left_sub{
+.texts{
+  font-family: 'Times New Roman';
+}
+
+.left_sub {
   float: left;
   /*margin-left: 10%;*/
 }
