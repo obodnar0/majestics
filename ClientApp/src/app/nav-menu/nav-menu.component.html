@@ -1,4 +1,101 @@
-<div class="navigation" *ngIf="isAuthenticated | async">
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" *ngIf="!(isAuthenticated | async)">
+    <div class="container">
+      <div class="button">
+        <nav role="navigation">
+          <div id="menuToggle">
+
+            <input type="checkbox" />
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+              <a [routerLink]="['/']"><li>Головна</li></a>
+              <a [routerLink]="['/info']"><li>Про конкурс</li></a>
+              <a href=""><li>Нагородження</li></a>
+              <a href=""><li>Переможці</li></a>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <a class="navbar-brand" [routerLink]="['/']">Majestics</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <app-login-menu></app-login-menu>
+        <!--<ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/counter']">Counter</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/fetch-data']">Fetch data</a>
+          </li>
+        </ul>-->
+      </div>
+    </div>
+  </nav>
+</header>
+
+
+<!-- ----------------------------------------- USER ACTIVE NAV-BAR ----------------------------------------- -->
+
+
+<!--<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" *ngIf="isAuthenticated | async">
+    <div class="container">
+      <div class="button">
+        <nav role="navigation">
+          <div id="menuToggle">
+
+            <input type="checkbox" />
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul id="menu">
+              <a href="#"><li>Головна</li></a>
+              <a href="./info"><li>Про конкурс</li></a>
+              <a href=""><li>Нагородження</li></a>
+              <a href=""><li>Переможці</li></a>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <a class="navbar-brand" [routerLink]="['/']">Majestics</a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
+           [ngClass]="{ show: isExpanded }">
+        <app-login-menu></app-login-menu>
+      </div>
+    </div>
+  </nav>
+</header>-->
+
+<!--<div class="navigation" *ngIf="isAuthenticated | async">
   <div class="button">
     <nav role="navigation">
       <div id="menuToggle">
@@ -32,13 +129,9 @@
         </ul>
     </label>
   </div>
-</div>
-
-
+</div>-->
 <!-- ---------------------- SECOND NAV-BAR ---------------------- -->
-
-
-<div class="navigation" *ngIf="!(isAuthenticated | async)">
+<!--<div class="navigation" *ngIf="!(isAuthenticated | async)">
   <div class="button">
     <nav role="navigation">
       <div id="menuToggle">
@@ -77,10 +170,7 @@
         <span class="psw"><a href="#">Нагадати пароль</a></span>
       </div>
     </form>
-  </div>
-</div>
-
-
+  </div>-->
 <!--<ul class="navbar-nav" *ngIf="isAuthenticated | async">
   <li class="nav-item">
     <nav role="navigation">
