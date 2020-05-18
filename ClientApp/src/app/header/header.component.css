@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans&display=swap);
+
 .wrapper {
   /*width: 80%;
   height: auto;*/
@@ -30,9 +32,19 @@
   float: left;
 }
 
-.header_title{
+.header_title {
   color: lightblue;
   text-transform: uppercase;
+  /*font-family: 'Book Antiqua';*/
+}
+
+.header_text {
+  font-family: 'Source Serif Pro';
+  font-size: 20px;
+}
+
+.btn {
+  font-family: 'Times New Roman';
 }
 
 .btn-success {

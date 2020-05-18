@@ -1,198 +1,14 @@
-.navigation {
-  width: 100%;
-  height: 60px;
+.navbar {
   background-color: darkslategray;
-  color: #2F3435;
-}
-
-.navigation, div {
-  display: inline-block;
-}
-
-.name {
-  margin-left: 100px;
-  margin-top: 20px;
-  position: absolute;
-  color: floralwhite;
-  /*z-index: 1;*/
-  font-style: @roboto;
-}
-
-.login {
-  float: right;
-  margin-right: 50px;
-  margin-top: 15px;
-}
-
-.dropbtn {
-  border-radius: 70px;
-  margin-top: -5px;
-  width: 100px;
-  height: 40px;
-  background-color: #01796f;
-  border-color: #01796f;
   color: floralwhite;
 }
 
-.dropbtn:hover{
-  background-color: #116062;
-  border-color: #116062;
-  color: floralwhite;
-}
-
-ul {
-  list-style: none;
-}
-
-
-/*------------------------------ DROPDOVN LOGIN STYLES -------------------------------------*/
-
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-.buttons {
-  background-color: #01796f;
+.navbar-brand{
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  float: right;
-  margin-bottom: 10px;
-  margin-right: 20px;
 }
 
-button:hover {
-  opacity: 0.8;
-}
 
-.register {
-  border-radius: 50px;
-  background-color: #2f809a;
-  border-color: #2f809a;
-  color: floralwhite;
-  width: 150px;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: tomato;
-  border-radius: 70px;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
-}
-
-.remember_m{
-  margin-left: 10px;
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
-  }
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {
-    -webkit-transform: scale(0)
-  }
-
-  to {
-    -webkit-transform: scale(1)
-  }
-}
-
-@keyframes animatezoom {
-  from {
-    transform: scale(0)
-  }
-
-  to {
-    transform: scale(1)
-  }
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-
-  .cancelbtn {
-    width: 100%;
-  }
-}
-
-/*------------------------------ HAMBURGER MENU STYLES -------------------------------------*/
+/*------------------------------------- HAMBURGER MENU STYLES -------------------------------------*/
 
 
 body {
@@ -238,7 +54,7 @@ body {
   -webkit-touch-callout: none;
 }
 
-#menuToggle span {   /*HAMBURGER ICON*/
+#menuToggle span { /*HAMBURGER ICON*/
   display: block;
   width: 33px;
   height: 4px;
@@ -281,7 +97,7 @@ body {
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
-  background: darkslategray;
+  background-color: darkslategray;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
@@ -290,10 +106,10 @@ body {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-#menu li {
-  padding: 10px 0;
-  font-size: 22px;
-}
+  #menu li {
+    padding: 10px 0;
+    font-size: 22px;
+  }
 
 #menuToggle input:checked ~ ul {
   transform: none;

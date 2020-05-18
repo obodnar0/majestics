@@ -1,16 +1,49 @@
 <ul class="navbar-nav" *ngIf="isAuthenticated | async">
-  <li class="nav-item">
-    <a class="nav-link text-dark" [routerLink]='["/authentication/profile"]' title="Manage">Hello {{ userName | async }}</a>
+  <!--<li class="nav-item">
+    <a class="nav-link text-dark" [routerLink]='["/authentication/profile"]' title="Manage">Hello </a>
   </li>
   <li class="nav-item">
     <a class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</a>
-  </li>
+  </li>-->
+  <div class="half">
+    <label for="profile2" class="profile-dropdown">
+      <input type="checkbox" id="profile2">
+      <img src="">
+      <span class="user">{{ userName | async }}</span>
+      <label for="profile2"><i class="mdi mdi-menu"></i></label>
+      <ul>
+        <li><a class="dropdown-item" [routerLink]='["/authentication/profile"]' title="Manage"><i class="mdi mdi-account"></i>Аккаунт</a></li>
+        <li><a class="dropdown-item" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout"><i class="mdi mdi-logout"></i>Вийти</a></li>
+      </ul>
+    </label>
+  </div>
 </ul>
 <ul class="navbar-nav" *ngIf="!(isAuthenticated | async)">
-  <li class="nav-item">
+  <!--<div class="dropdown">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      Реєстрація/Вхід
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" [routerLink]='["/authentication/register"]'>Реєстрація</a>
+      <a class="dropdown-item" [routerLink]='["/authentication/login"]'>Вхід</a>
+    </div>
+  </div>-->
+  <div class="half">
+    <label for="profile2" class="profile-dropdown">
+      <input type="checkbox" id="profile2">
+      <img src="">
+      <span class="user">Вхід/Реєстрація</span>
+      <label for="profile2"><i class="mdi mdi-menu"></i></label>
+      <ul>
+        <li><a class="dropdown-item" [routerLink]='["/authentication/register"]'>Реєстрація</a></li>
+        <li><a class="dropdown-item" [routerLink]='["/authentication/login"]'>Вхід</a></li>
+      </ul>
+    </label>
+  </div>
+  <!--<li class="nav-item">
     <a class="nav-link text-dark" [routerLink]='["/authentication/register"]'>Register</a>
   </li>
   <li class="nav-item">
     <a class="nav-link text-dark" [routerLink]='["/authentication/login"]'>Login</a>
-  </li>
+  </li>-->
 </ul>
