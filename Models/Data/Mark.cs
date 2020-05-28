@@ -10,7 +10,9 @@ namespace Majestics.Models.Data
 
         public DateTime CreationDate { get; set; }
 
-        public string? UserId { get; set; }
+        public string Ip { get; set; }
+
+        public string UserId { get; set; }
         
         public virtual User User { get; set; }
 

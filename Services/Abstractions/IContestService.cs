@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Majestics.Models.Contest;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Majestics.Models.Contest;
 
 namespace Majestics.Services.Abstractions
 {
@@ -10,5 +8,10 @@ namespace Majestics.Services.Abstractions
     {
         Task<List<ContestViewModel>> GetAllContestsAsync();
 
+        Task<bool> AddWorkAsync(AddWorkRequest request);
+
+        Task<ContestViewModel> CreateContestAsync(ContestAddModel request);
+
+        Task<bool> MarkWorkAsync(MarkWorkRequest request);
     }
 }

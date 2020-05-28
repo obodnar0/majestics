@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using Majestics.Data;
+﻿using Majestics.Data;
 using Majestics.Helpers.Enums;
 using Majestics.Models.Contest;
+using Majestics.Models.Data;
 using Majestics.Models.Users;
 using Majestics.Services.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Majestics.Models.Contest.dto;
 
 namespace Majestics.Services.Implementations
 {
@@ -24,52 +24,92 @@ namespace Majestics.Services.Implementations
 
         public async Task<List<ContestViewModel>> GetAllContestsAsync()
         {
-            try
-            {
-                var result = await _dbContext.Contests.Where(x => x.State != ModelState.Deleted)
-                    .Select(x => new ContestViewModel
+            var result = await _dbContext.Contests.Where(x => x.State != ModelState.Deleted)
+                .Select(x => new ContestViewModel
+                {
+                    Works = x.Works.Select(q => new WorkViewModel
                     {
-                        Works = x.Works.Select(q => new WorkViewModel
+                        User = new UserViewModel
                         {
-                            User = new UserViewModel
-                            {
-                                FirstName = q.User.FirstName,
-                                Institute = q.User.Institute,
-                                LastName = q.User.LastName
-                            },
-                            Description = q.Description,
-                            Title = q.Title,
-                            AnonMark = q.AnonMark,
-                            AverageMark = q.AverageMark,
-                            JuryMark = q.JuryMark,
-                            Source = q.Source,
-                            UsersMark = q.UsersMark
-                        }).ToList(),
-                        Description = x.Description,
-                        Title = x.Title
-                    }).ToListAsync();
+                            FirstName = q.User.FirstName,
+                            Institute = q.User.Institute,
+                            LastName = q.User.LastName
+                        },
+                        Description = q.Description,
+                        Title = q.Title,
+                        AnonMark = q.AnonMark,
+                        AverageMark = q.AverageMark,
+                        JuryMark = q.JuryMark,
+                        Source = q.Source,
+                        UsersMark = q.UsersMark
+                    }).ToList(),
+                    Description = x.Description,
+                    Title = x.Title,
+                    ContestId = x.Id
+                }).ToListAsync();
 
-                return result;
-            }
-            catch (Exception ex)
+            return result;
+        }
+
+        public async Task<bool> AddWorkAsync(AddWorkRequest request)
+        {
+            await _dbContext.AddAsync(new Work
             {
-                throw;
+                UserId = request.UserId,
+                Description = request.Description,
+                Title = request.Title,
+                State = ModelState.Active,
+                Source = request.Source,
+                WorkStatus = WorkState.Unmarked
+            });
+
+            return true;
+        }
+
+        public async Task<ContestViewModel> CreateContestAsync(ContestAddModel request)
+        {
+            var contest = new Contest
+            {
+                State = ModelState.Active,
+                Description = request.Description,
+                IsOpen = request.IsOpen,
+                Title = request.Title,
+            };
+
+            await _dbContext.AddAsync(contest);
+
+            return new ContestViewModel
+            {
+                ContestId = contest.Id,
+                Description = contest.Description,
+                Title = contest.Title
+            };
+        }
+
+        public async Task<bool> MarkWorkAsync(MarkWorkRequest request)
+        {
+            var currentUserExistingMark = await _dbContext.Marks.FirstOrDefaultAsync(x => x.WorkId == request.WorkId && 
+                                                                                     x.CriteriaId == request.CriteriaId &&
+                                                                                     (x.Ip == request.Ip || x.UserId == request.UserId));
+
+            if (currentUserExistingMark == null)
+            {
+                await _dbContext.AddAsync(new Mark
+                {
+                    CreationDate = DateTime.Now,
+                    CriteriaId = request.CriteriaId,
+                    Ip = request.Ip,
+                    State = ModelState.Active,
+                    Value = request.Mark,
+                    WorkId = request.WorkId
+                });
             }
-        }
+            else
+            {
+                currentUserExistingMark.Value = request.Mark;
+            }
 
-        public async Task<ContestViewModel> CreateContest()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> PublishWork()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<bool> MarkWork()
-        {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

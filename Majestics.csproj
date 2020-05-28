@@ -28,9 +28,18 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Models\Competition\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Models\Competition\**" />
+    <EmbeddedResource Remove="Models\Competition\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Models\Competition\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200528200704_contestsAndMarks.cs" />
+    <Compile Remove="Data\Migrations\20200528200704_contestsAndMarks.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,7 +55,6 @@
     <EmbeddedResource Include="ClientApp\src\assets\images\header\popuga.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <Folder Include="Models\Competition\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

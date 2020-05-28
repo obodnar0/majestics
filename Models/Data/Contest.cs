@@ -9,9 +9,10 @@ namespace Majestics.Models.Contest.dto
 
         public string Description { get; set; }
 
+        public bool IsOpen { get; set; }
+
         public IEnumerable<UserContest> Users { get; set; }
 
         public ICollection<Work> Works { get; set; }
-
     }
 }
