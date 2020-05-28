@@ -49,6 +49,8 @@ namespace Majestics.Controllers
         {
             try
             {
+                work.UserId = _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
                 var result = await _contestService.AddWorkAsync(work);
 
                 return Result.Ok(result);

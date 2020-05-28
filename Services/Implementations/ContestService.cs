@@ -53,17 +53,25 @@ namespace Majestics.Services.Implementations
 
         public async Task<bool> AddWorkAsync(AddWorkRequest request)
         {
-            await _dbContext.AddAsync(new Work
+            var contest = await _dbContext.Contests
+                .Include(x => x.Users)
+                .FirstOrDefaultAsync(x => x.Id == request.ContestId);
+            if (contest.IsOpen || contest.Users.Any(x => x.UserId == request.UserId))
             {
-                UserId = request.UserId,
-                Description = request.Description,
-                Title = request.Title,
-                State = ModelState.Active,
-                Source = request.Source,
-                WorkStatus = WorkState.Unmarked
-            });
+                await _dbContext.AddAsync(new Work
+                {
+                    UserId = request.UserId,
+                    Description = request.Description,
+                    Title = request.Title,
+                    State = ModelState.Active,
+                    Source = request.Source,
+                    WorkStatus = WorkState.Unmarked
+                });
 
-            return true;
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<ContestViewModel> CreateContestAsync(ContestAddModel request)
