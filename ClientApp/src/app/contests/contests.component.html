@@ -1,0 +1,24 @@
+
+<h1 id="tableLabel">Список конкурсів</h1>
+
+<p *ngIf="!contests"><em>Завантаження...</em></p>
+
+<button (click)="addContest()">Додати конкурс</button>
+<div *ngIf="isAdd">
+  <add-contest-component></add-contest-component>
+</div>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="contests">
+  <thead>
+  <tr>
+    <th>Назва</th>
+    <th>Опис</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contest of contests">
+    <td>{{ contest.Title }}</td>
+    <td>{{ contest.Description }}</td>
+  </tr>
+  </tbody>
+</table>

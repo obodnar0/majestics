@@ -10,6 +10,8 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>majestics.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -43,6 +45,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Models\contest.ts" />
+    <None Remove="ClientApp\src\app\Models\Mark.ts" />
+    <None Remove="ClientApp\src\app\Models\response.ts" />
+    <None Remove="ClientApp\src\app\Models\user.ts" />
+    <None Remove="ClientApp\src\app\Models\work.ts" />
+    <None Remove="ClientApp\src\app\services\contests.service.ts" />
+    <None Remove="ClientApp\src\app\utils\utilities.ts" />
     <None Remove="ClientApp\src\assets\images\header\head.jpg" />
     <None Remove="ClientApp\src\assets\images\header\popuga.jpg" />
   </ItemGroup>
@@ -55,6 +64,22 @@
     <EmbeddedResource Include="ClientApp\src\assets\images\header\popuga.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\mark.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\response.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\user.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\work.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\contest.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\contests.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\utils\utilities.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

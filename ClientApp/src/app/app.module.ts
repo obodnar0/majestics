@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.module';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
@@ -16,28 +15,30 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FooterComponent } from './footer/footer.component';
 import { InfoWindowComponent } from './info-window/info-window.component'
-
+import { ContestsComponent } from "./contests/contests.component";
+import { AddContestsComponent } from "./contests/addContest/add-contest.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        CounterComponent,
+        ContestsComponent,
         FetchDataComponent,
         HeaderComponent,
         MainComponent,
         FooterComponent,
-        InfoWindowComponent
+        InfoWindowComponent,
+        AddContestsComponent
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
         HttpClientModule,
-        FormsModule,
+        FormsModule, 
         ApiAuthorizationModule,
         RouterModule.forRoot([
             { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'counter', component: CounterComponent },
+            { path: 'contests', component: ContestsComponent },
             { path: 'info', component: InfoWindowComponent },
             { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
         ])

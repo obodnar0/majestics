@@ -14,6 +14,7 @@ namespace Majestics.Models.Users
 
         public string Institute { get; set; }
 
+        [JsonIgnore]
         public List<WorkViewModel> Works { get; set; }
     }
 }

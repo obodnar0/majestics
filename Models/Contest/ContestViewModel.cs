@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Microsoft.CodeAnalysis;
 
 namespace Majestics.Models.Contest
 {

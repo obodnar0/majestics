@@ -67,6 +67,7 @@ namespace Majestics.Services.Implementations
                     Source = request.Source,
                     WorkStatus = WorkState.Unmarked
                 });
+                await _dbContext.SaveChangesAsync();
 
                 return true;
             }
@@ -85,6 +86,7 @@ namespace Majestics.Services.Implementations
             };
 
             await _dbContext.AddAsync(contest);
+            await _dbContext.SaveChangesAsync();
 
             return new ContestViewModel
             {
@@ -111,6 +113,7 @@ namespace Majestics.Services.Implementations
                     Value = request.Mark,
                     WorkId = request.WorkId
                 });
+                await _dbContext.SaveChangesAsync();
             }
             else
             {
