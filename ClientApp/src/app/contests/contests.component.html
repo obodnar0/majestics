@@ -5,7 +5,7 @@
 
 <button (click)="addContest()">Додати конкурс</button>
 <div *ngIf="isAdd">
-  <add-contest-component></add-contest-component>
+  <add-contest-component (contestCreated)="loadContests()"></add-contest-component>
 </div>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="contests">
