@@ -1,6 +1,6 @@
 <div class="root-block">
-  <h2>{{contest.Title}}</h2>
-  <h3>{{contest.Description}}</h3>
+  <h2 class="title">{{contest.Title}}</h2>
+  <h3 class="info_title">{{contest.Description}}</h3>
 
   <button (click)="addWork()">Додати роботу</button>
   <div *ngIf="isAdd">
@@ -9,13 +9,30 @@
 
   <p *ngIf="!contest"><em>Завантаження...</em></p>
 
-  <ul>
-    <li *ngFor="let work of contest.Works">
+
+
+  <ul class="image_gird">
+    <li *ngFor="let work of contest.Works" class="gird_element">
+      <img src="{{work.Source}}" class="user-image" />
       <h5>{{work.Title}}</h5>
       <h5>{{work.Description}}</h5>
-      <img src="{{work.Source}}" class="user-image" />
-      <p>{{work.User.FirstName}} {{work.User.LastName}}</p>
+      <p class="name">{{work.User.FirstName}} {{work.User.LastName}}</p>
     </li>
   </ul>
-</div>
+
+  <!--<div class="images_gallery">
+    <div class="responsive">
+      <div *ngFor="let work of contest.Works" class="gallery">
+        <a target="_blank" href="" class="gallery_image">
+          <img src="{{work.Source}}" class="user-image" width="400" height="400">
+        </a>
+        <div class="desc">
+          <p class="art_description"><b>{{work.Description}}</b></p>
+          <p class="Author_name">Author: {{work.User.FirstName}} {{work.User.LastName}}</p>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+ </div>
 

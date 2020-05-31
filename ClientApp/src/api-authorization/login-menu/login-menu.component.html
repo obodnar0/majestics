@@ -1,10 +1,4 @@
 <ul class="navbar-nav" *ngIf="isAuthenticated | async">
-  <!--<li class="nav-item">
-    <a class="nav-link text-dark" [routerLink]='["/authentication/profile"]' title="Manage">Hello </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</a>
-  </li>-->
   <div class="half">
     <label for="profile2" class="profile-dropdown">
       <input type="checkbox" id="profile2">
@@ -19,15 +13,6 @@
   </div>
 </ul>
 <ul class="navbar-nav" *ngIf="!(isAuthenticated | async)">
-  <!--<div class="dropdown">
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-      Реєстрація/Вхід
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" [routerLink]='["/authentication/register"]'>Реєстрація</a>
-      <a class="dropdown-item" [routerLink]='["/authentication/login"]'>Вхід</a>
-    </div>
-  </div>-->
   <div class="half">
     <label for="profile2" class="profile-dropdown">
       <input type="checkbox" id="profile2">
@@ -40,10 +25,4 @@
       </ul>
     </label>
   </div>
-  <!--<li class="nav-item">
-    <a class="nav-link text-dark" [routerLink]='["/authentication/register"]'>Register</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-dark" [routerLink]='["/authentication/login"]'>Login</a>
-  </li>-->
 </ul>

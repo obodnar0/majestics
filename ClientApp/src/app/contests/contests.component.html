@@ -1,14 +1,36 @@
-
-<h1 id="tableLabel">Список конкурсів</h1>
-
-<button (click)="addContest()">Додати конкурс</button>
-<div *ngIf="isAdd">
-  <add-contest-component (contestCreated)="loadContests()"></add-contest-component>
+<div class="top_block">
+  <div class="title_block">
+    <h1 id="tableLabel" style="margin-left: 20px;">Список конкурсів</h1>
+  </div>
+  <div class="button_top">
+    <button (click)="addContest()" style="border-radius: 70px; width: 170px; height: 50px; background-color: #2f809a; border-color: #2f809a; color: white; text-transform: uppercase; margin: 0px 20px 10px;">Додати конкурс</button>
+    <div *ngIf="isAdd">
+      <add-contest-component (contestCreated)="loadContests()"></add-contest-component>
+    </div>
+  </div>
 </div>
-
 <p *ngIf="!contests"><em>Завантаження...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="contests">
+<table class='table table-hover' aria-labelledby="tableLabel" *ngIf="contests">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Назва</th>
+      <th scope="col">Опис</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contest of contests" style="cursor: pointer" (click)="navigateContest(contest)">
+      <td style="width: 30%;">{{ contest.Title }}</td>
+      <td>{{ contest.Description }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-------------------------------- UNSTYLES TABLE -------------------------------->
+
+
+<!--<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="contests">
   <thead>
     <tr>
       <th>Назва</th>
@@ -17,8 +39,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let contest of contests" style="cursor: pointer" (click)="navigateContest(contest)">
-      <td>{{ contest.Title }}</td>
+      <td style="width: 30%;">{{ contest.Title }}</td>
       <td>{{ contest.Description }}</td>
     </tr>
   </tbody>
-</table>
+</table>-->

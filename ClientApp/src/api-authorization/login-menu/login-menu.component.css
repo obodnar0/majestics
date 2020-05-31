@@ -2,28 +2,30 @@
 
 
 .user {
-  color: floralwhite;
+  color: #2F3435;
   text-align: center;
-}
-
-.user:hover{
-  color: tomato;
+  font-family: 'roboto';
 }
 
 .half {
   float: right;
   margin-top: 3px;
+  margin-right: 3%;
 }
 
 .profile-dropdown {
-  display: inline-block;
   position: relative;
-  background: darkslategray;
+  background: #F2F0E3;
   height: 40px;
   margin: auto;
-  font-weight: bold;
-  font-size: 1.3rem;
-  border-radius: 3px;
+  font-size: 20px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.profile-dropdown * {
   -webkit-user-select: none;
   /* Chrome all / Safari all */
   -moz-user-select: none;
@@ -34,17 +36,6 @@
   /* Likely future */
 }
 
-  .profile-dropdown * {
-    -webkit-user-select: none;
-    /* Chrome all / Safari all */
-    -moz-user-select: none;
-    /* Firefox all */
-    -ms-user-select: none;
-    /* IE 10+ */
-    user-select: none;
-    /* Likely future */
-  }
-
 .profile-dropdown input[type=checkbox] {
   display: none;
 }
@@ -54,16 +45,16 @@
   animation: pulse 0.5s;
 }
 
-.profile-dropdown input[type=checkbox]:checked ~ img {
+/*.profile-dropdown input[type=checkbox]:checked ~ img {
   background: tomato;
-}
+}*/
 
-.profile-dropdown input[type=checkbox]:checked ~ label {
+/*.profile-dropdown input[type=checkbox]:checked ~ label {
   background: tomato;
-}
+}*/
 
 .profile-dropdown input[type=checkbox]:checked ~ label i {
-  color: floralwhite;
+  color: #2F3435;
 }
 
 .profile-dropdown input[type=checkbox]:checked ~ label:after {
@@ -104,7 +95,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  background: darkslategray;
+  background: #F2F0E3;
   position: absolute;
   top: 100%;
   right: 0;
@@ -116,7 +107,7 @@
   display: block;
   padding: 0.75rem 1rem;
   text-decoration: none;
-  color: floralwhite;
+  color: #2F3435;
   font-size: 1rem;
 }
 
@@ -128,7 +119,7 @@
 
 .profile-dropdown ul li a:hover {
   color: tomato;
-  background-color: darkslategray;
+  background-color: lightgrey;
 }
 
 .profile-dropdown ul li:first-child a:hover {

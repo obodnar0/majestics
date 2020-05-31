@@ -1,7 +1,66 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
 .root-block {
     margin: 10px;
 }
+
 .user-image {
   height: 500px;
   width: 500px;
 }
+
+button {
+  border-radius: 70px;
+  width: 170px;
+  height: 50px;
+  background-color: #2f809a;
+  border-color: #2f809a;
+  color: white;
+  text-transform: uppercase;
+  margin: 0px 20px 10px;
+}
+
+button:hover {
+  background-color: #adbce6;
+  color: #18404d;
+  border-color: #adbce6;
+}
+
+.title, .info_title {
+  font-family: 'Open Sans', sans-serif;
+  margin: 10px 25px 15px;
+}
+
+li {
+  list-style-type: none;
+}
+
+h5{
+    margin: 10px 20px;
+}
+
+.name{
+    margin: 10px 0px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+img {
+  margin-right: 50px;
+  width: 80%;
+  height: auto;
+  margin: 20px;
+}
+
+.image_gird, li{
+    display: inline-block;
+}
+
+/*.images_gallery{
+    width: 80%;
+    height: auto;
+    margin: auto;
+}
+
+.images_gallery, div{
+    display: inline-block;
+}*/
