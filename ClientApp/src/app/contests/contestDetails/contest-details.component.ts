@@ -12,6 +12,11 @@ export class ContestDetailsComponent implements OnInit {
   private contestId: number;
   private contest: IContest;
 
+  public isAdd: boolean;
+  addWork() {
+    this.isAdd = !this.isAdd;
+  }
+
   constructor(private contestsService: ContestsService,
     private route: ActivatedRoute) {
   }
@@ -19,7 +24,6 @@ export class ContestDetailsComponent implements OnInit {
   getContestDetails() {
     this.contestsService.GetContest(this.contestId).subscribe(response => {
       this.contest = JSON.parse(response.result);
-      console.log(response);
     }, error => console.error(error));
   }
 

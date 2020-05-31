@@ -4,11 +4,11 @@ import { ContestsService } from "../../services/contests.service";
 import { Utilities } from "../../utils/utilities";
 
 @Component({
-  selector: 'add-work-component',
-  templateUrl: './add-work.component.html',
-  styleUrls: ['./add-work.component.css']
+  selector: 'mark-work-component',
+  templateUrl: './mark-work.component.html',
+  styleUrls: ['./mark-work.component.css']
 })
-export class AddWorksComponent {
+export class MarkWorksComponent {
 
   constructor(private contestsService: ContestsService,
     private router: Router,

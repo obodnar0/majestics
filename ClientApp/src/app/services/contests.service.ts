@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams,  } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 import { IApiResponse } from "../Models/response";
 
@@ -32,10 +32,32 @@ export class ContestsService {
 
     return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/CreateContest', body);
   }
+
+  CreateWork(title: string, description: string, source: string, contestId: number) {
+    const body: CreateWork = {
+      title: title,
+      description: description,
+      source: source,
+      contestId: contestId
+    }
+
+    return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/AddWork', body);
+  }
+
+  UploadFile(formData: FormData) {
+    return this.http.post<IApiResponse>(this.baseUrl + 'Data/UploadFile', formData);
+  }
 }
 
 class CreateContest {
   title: string;
   description: string;
   isOpen: boolean;
+}
+
+class CreateWork {
+  contestId: number;
+  title: string;
+  description: string;
+  source: string;
 }

@@ -4,7 +4,7 @@ namespace Majestics.Models.Contest
 {
     public class AddWorkRequest
     {
-        public int ContestId { get; set; }
+        public string ContestId { get; set; }
 
         public string Source { get; set; }
 

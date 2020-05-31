@@ -89,13 +89,13 @@ namespace Majestics.Services.Implementations
         {
             var contest = await _dbContext.Contests
                 .Include(x => x.Users)
-                .FirstOrDefaultAsync(x => x.Id == request.ContestId);
+                .FirstOrDefaultAsync(x => x.Id == int.Parse(request.ContestId));
             if (contest.IsOpen || contest.Users.Any(x => x.UserId == request.UserId))
             {
                 await _dbContext.AddAsync(new Work
                 {
                     UserId = request.UserId,
-                    ContestId = request.ContestId,
+                    ContestId = int.Parse(request.ContestId),
                     Description = request.Description,
                     Title = request.Title,
                     State = ModelState.Active,
