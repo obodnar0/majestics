@@ -19,6 +19,7 @@ import { ContestsComponent } from "./contests/contests.component";
 import { AddContestsComponent } from "./contests/addContest/add-contest.component";
 import { ContestDetailsComponent } from "./contests/contestDetails/contest-details.component";
 import { AddWorksComponent } from "./contests/addWork/add-work.component";
+import { MarkWorksComponent } from "./contests/markWork/mark-work.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddWorksComponent } from "./contests/addWork/add-work.component";
     FooterComponent,
     InfoWindowComponent,
     AddContestsComponent,
-    AddWorksComponent
+    AddWorksComponent,
+    MarkWorksComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
