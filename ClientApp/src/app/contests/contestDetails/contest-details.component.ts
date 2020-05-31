@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContestsService } from "../../services/contests.service";
 import { IContest } from "../../Models/contest";
+import { AddWorksComponent } from "../addWork/add-work.component";
 
 @Component({
   selector: 'contest-details-component',

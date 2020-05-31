@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContestsService } from "../../services/contests.service";
 import { Utilities } from "../../utils/utilities";
@@ -8,33 +8,26 @@ import { Utilities } from "../../utils/utilities";
   templateUrl: './mark-work.component.html',
   styleUrls: ['./mark-work.component.css']
 })
-export class MarkWorksComponent {
+export class MarkWorksComponent implements OnInit {
 
   constructor(private contestsService: ContestsService,
     private router: Router,
     private utilities: Utilities) {
   }
 
-  @Input() contestId: number;
-  @Output() workCreated = new EventEmitter<boolean>();
-
-  selectedFile: File = null;
-
-  onFileSelected(event) {
-    this.selectedFile = <File>event.target.files[0];
-  }
-
+  public isOpen: boolean;
+  @Input() workId: number;
 
   public addWork(title: string, description: string, source: string) {
 
-    let formData: FormData = new FormData();
-    formData.append('file', this.selectedFile, this.selectedFile.name);
-    this.contestsService.UploadFile(formData).subscribe(result => {
-      console.log(result);
-      this.contestsService.CreateWork(title, description, result.result, this.contestId)
-        .subscribe(res => {
-          console.log(res); this.workCreated.next(true)});
-    });
+    //let formData: FormData = new FormData();
+    //formData.append('file', this.selectedFile, this.selectedFile.name);
+    //this.contestsService.UploadFile(formData).subscribe(result => {
+    //  console.log(result);
+    //  this.contestsService.CreateWork(title, description, result.result, this.contestId)
+    //    .subscribe(res => {
+    //      console.log(res); this.workCreated.next(true)});
+    //});
 
     //  this.contestsService.CreateContest(title, description, this.utilities.getBoolean(isOpen)).subscribe(response => {
     //    this.workCreated.next(true);
@@ -42,5 +35,9 @@ export class MarkWorksComponent {
     //      this.workCreated.next(false);
     //    console.error(error);
     //  });;
+  }
+
+  ngOnInit() {
+    
   }
 }
