@@ -21,10 +21,15 @@ export class ContestsComponent {
     console.log(this.isAdd);
   }
 
+  public navigateContest(contest: IContest) {
+    this.router.navigate(
+      ['/contest', contest.ContestId]);
+  }
+
   public loadContests() {
     this.contestsService.GetContests().subscribe(response => {
       this.contests = JSON.parse(response.result);
-      console.log();
+      console.log(response.result);
     }, error => console.error(error));
   }
 }

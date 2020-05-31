@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Majestics.Models.Contest.dto;
+using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace Majestics.Services.Implementations
 {
@@ -22,9 +23,42 @@ namespace Majestics.Services.Implementations
             _dbContext = dbContext;
         }
 
+        public async Task<ContestViewModel> GetContestAsync(int contestId)
+        {
+            var result = await _dbContext.Contests
+                .Include(x => x.Works)
+                .Where(x => x.State != ModelState.Deleted && x.Id == contestId)
+                .Select(x => new ContestViewModel
+                {
+                    Works = x.Works.Select(q => new WorkViewModel
+                    {
+                        User = new UserViewModel
+                        {
+                            FirstName = q.User.FirstName,
+                            Institute = q.User.Institute,
+                            LastName = q.User.LastName
+                        },
+                        Description = q.Description,
+                        Title = q.Title,
+                        AnonMark = q.AnonMark,
+                        AverageMark = q.AverageMark,
+                        JuryMark = q.JuryMark,
+                        Source = q.Source,
+                        UsersMark = q.UsersMark
+                    }).ToList(),
+                    Description = x.Description,
+                    Title = x.Title,
+                    ContestId = x.Id
+                }).FirstOrDefaultAsync();
+
+            return result;
+        }
+
         public async Task<List<ContestViewModel>> GetAllContestsAsync()
         {
-            var result = await _dbContext.Contests.Where(x => x.State != ModelState.Deleted)
+            var result = await _dbContext.Contests
+                .Include(x => x.Works)
+                .Where(x => x.State != ModelState.Deleted)
                 .Select(x => new ContestViewModel
                 {
                     Works = x.Works.Select(q => new WorkViewModel
@@ -61,12 +95,14 @@ namespace Majestics.Services.Implementations
                 await _dbContext.AddAsync(new Work
                 {
                     UserId = request.UserId,
+                    ContestId = request.ContestId,
                     Description = request.Description,
                     Title = request.Title,
                     State = ModelState.Active,
                     Source = request.Source,
                     WorkStatus = WorkState.Unmarked
                 });
+                
                 await _dbContext.SaveChangesAsync();
 
                 return true;

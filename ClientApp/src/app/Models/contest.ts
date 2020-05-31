@@ -1,8 +1,8 @@
-import { Work } from "./work"
+import { IWork } from "./work"
 
 export interface IContest {
-  contestId: number;
+  ContestId: number;
   title: string; 
   description: string;
-  works: Work[];
+  works: IWork[];
 }

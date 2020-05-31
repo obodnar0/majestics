@@ -27,7 +27,7 @@ namespace Majestics.Controllers
             _contextAccessor = contextAccessor;
         }
 
-        [HttpGet("Get")]
+        [HttpGet("GetAll")]
         [AllowAnonymous]
         public async Task<ActionResult> GetContests()
         {
@@ -41,7 +41,22 @@ namespace Majestics.Controllers
             {
                 return Result.Error(ex);
             }
+        }
 
+        [HttpGet("Get")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetContests([FromQuery]int contestId)
+        {
+            try
+            {
+                var result = await _contestService.GetContestAsync(contestId);
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex);
+            }
         }
 
         [HttpPost("AddWork")]

@@ -1,0 +1,18 @@
+<div class="root-block">
+  <h2>{{contest.Title}}</h2>
+  <h3>{{contest.Description}}</h3>
+
+  <button (click)>Додати роботу</button>
+
+  <p *ngIf="!contest"><em>Завантаження...</em></p>
+
+  <ul>
+    <li *ngFor="let work of contest.Works">
+      <h5>{{work.Title}}</h5>
+      <h5>{{work.Description}}</h5>
+      <img src="{{work.Source}}" class="user-image"/>
+      <p>{{work.User.FirstName}} {{work.User.LastName}}</p>
+    </li>
+  </ul>
+</div>
+

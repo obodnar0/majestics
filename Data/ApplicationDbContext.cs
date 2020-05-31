@@ -36,8 +36,15 @@ namespace Majestics.Data
                 .WithMany(p => p.CreatedPosts)
                 .HasForeignKey(x => x.CreatedByUserId);
 
-            modelBuilder.Entity<Contest>()
-                .HasMany(x => x.Users);
+            modelBuilder.Entity<Work>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.Works)
+                .HasForeignKey(x => x.UserId);
+            
+            modelBuilder.Entity<Work>()
+                .HasOne(x => x.Contest)
+                .WithMany(x => x.Works)
+                .HasForeignKey(x => x.ContestId);
 
             modelBuilder.Entity<UserContest>()
                 .HasOne(bc => bc.User)

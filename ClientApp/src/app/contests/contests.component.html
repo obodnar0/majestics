@@ -16,7 +16,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let contest of contests">
+  <tr *ngFor="let contest of contests" style="cursor: pointer" (click)="navigateContest(contest)">
     <td>{{ contest.Title }}</td>
     <td>{{ contest.Description }}</td>
   </tr>

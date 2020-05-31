@@ -1,6 +1,6 @@
-import { User } from "./user";
+import { IUser } from "./user";
 
-export class Work {
+export interface IWork {
   source: string;
   title: string;
   description: string;
@@ -8,5 +8,5 @@ export class Work {
   usersMark: number;
   juryMark: number;
   averageMark: number;
-  user: User;
+  user: IUser;
 }

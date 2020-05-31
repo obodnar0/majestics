@@ -17,35 +17,40 @@ import { FooterComponent } from './footer/footer.component';
 import { InfoWindowComponent } from './info-window/info-window.component'
 import { ContestsComponent } from "./contests/contests.component";
 import { AddContestsComponent } from "./contests/addContest/add-contest.component";
+import { ContestDetailsComponent } from "./contests/contestDetails/contest-details.component";
+import { AddWorksComponent } from "./contests/addWork/add-work.component";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        NavMenuComponent,
-        HomeComponent,
-        ContestsComponent,
-        FetchDataComponent,
-        HeaderComponent,
-        MainComponent,
-        FooterComponent,
-        InfoWindowComponent,
-        AddContestsComponent
-    ],
-    imports: [
-        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        HttpClientModule,
-        FormsModule, 
-        ApiAuthorizationModule,
-        RouterModule.forRoot([
-            { path: '', component: HomeComponent, pathMatch: 'full' },
-            { path: 'contests', component: ContestsComponent },
-            { path: 'info', component: InfoWindowComponent },
-            { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
-        ])
-    ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    NavMenuComponent,
+    HomeComponent,
+    ContestsComponent,
+    FetchDataComponent,
+    HeaderComponent,
+    ContestDetailsComponent,
+    MainComponent,
+    FooterComponent,
+    InfoWindowComponent,
+    AddContestsComponent,
+    AddWorksComponent
+  ],
+  imports: [
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    HttpClientModule,
+    FormsModule,
+    ApiAuthorizationModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'contests', component: ContestsComponent },
+      { path: 'contest/:id', component: ContestDetailsComponent },
+      { path: 'info', component: InfoWindowComponent },
+      //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
+    ])
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

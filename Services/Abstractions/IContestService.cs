@@ -8,6 +8,8 @@ namespace Majestics.Services.Abstractions
     {
         Task<List<ContestViewModel>> GetAllContestsAsync();
 
+        Task<ContestViewModel> GetContestAsync(int contestId);
+
         Task<bool> AddWorkAsync(AddWorkRequest request);
 
         Task<ContestViewModel> CreateContestAsync(ContestAddModel request);

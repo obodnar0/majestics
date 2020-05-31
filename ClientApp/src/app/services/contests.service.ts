@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../environments/environment";
-import { ApiResponse } from "../Models/response";
+import { IApiResponse } from "../Models/response";
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,11 @@ export class ContestsService {
   }
 
   GetContests() {
-    return this.http.get<ApiResponse>(this.baseUrl + 'api/Contest/Get')
+    return this.http.get<IApiResponse>(this.baseUrl + 'api/Contest/GetAll');
+  }
+
+  GetContest(contestId: number) {
+    return this.http.get<IApiResponse>(this.baseUrl + 'api/Contest/Get?contestId=' + contestId);
   }
 
   CreateContest(title: string, description: string, isOpen: boolean) {
@@ -26,7 +30,7 @@ export class ContestsService {
       isOpen: isOpen,
     }
 
-    return this.http.post<ApiResponse>(this.baseUrl + 'api/Contest/CreateContest', body);
+    return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/CreateContest', body);
   }
 }
 
