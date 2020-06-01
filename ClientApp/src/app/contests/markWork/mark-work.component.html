@@ -1,9 +1,16 @@
-<div id="myModal" class="modal root-block">
+﻿<div class="root-block">
 
-  <!-- Modal content -->
-  <div [ngClass]="{'modal-content': isOpen === 1 }"class="">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+  <span *ngIf="!work"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></span>
+
+  <h5>{{work.Title}}</h5>
+  <h5>{{work.Description}}</h5>
+  <img src="{{work.Source}}" class="user-image"/>
+  <p>{{work.User.FirstName}} {{work.User.LastName}}</p>
+  <h6>оцінки</h6>
+  <p>Судді: {{work.JuryMark}} Користувачі: {{work.UsersMark}} Анонімна оцінка: {{work.AnonMark}} Середня оцінка: <b>{{work.AverageMark}}</b></p>
+  <div *ngFor="let criteria of criterias">
+    <span><b>{{criteria.Name}}</b> {{criteria.Description}}</span>
+    <input #markInput id="{{criteria.Id}}" type="number" maxlength="3" placeholder="100" />
   </div>
-
+  <button id="mark-{{work.WorkId}}" (click)="markWork()">Додати оцінку</button>
 </div>

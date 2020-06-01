@@ -1,4 +1,5 @@
 ﻿using System;
+using Majestics.Helpers.Enums;
 
 namespace Majestics.Models.Data
 {
@@ -8,9 +9,11 @@ namespace Majestics.Models.Data
 
         public int CriteriaId { get; set; }
 
+        public UserType? UserType { get; set; }
+
         public DateTime CreationDate { get; set; }
 
-        public string Ip { get; set; }
+        public string IdCode { get; set; }
 
         public string UserId { get; set; }
         

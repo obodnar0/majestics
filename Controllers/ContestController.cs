@@ -59,6 +59,38 @@ namespace Majestics.Controllers
             }
         }
 
+        [HttpGet("GetCriterias")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetCriterias()
+        {
+            try
+            {
+                var result = await _contestService.GetCriteriasAsync();
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex);
+            }
+        }
+
+        [HttpGet("GetWorkDetails")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetWork([FromQuery]string workId)
+        {
+            try
+            {
+                var result = await _contestService.GetWorkAsync(int.Parse(workId));
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex);
+            }
+        }
+
         [HttpPost("AddWork")]
         public async Task<ActionResult> AddWork(AddWorkRequest work) 
         {
@@ -91,6 +123,7 @@ namespace Majestics.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost("AddMark")]
         public async Task<ActionResult> MarkWorkAsync(MarkWorkRequest request)
         {
@@ -105,7 +138,7 @@ namespace Majestics.Controllers
                     request.UserId = null;
                 }
 
-                request.Ip = _contextAccessor.HttpContext.Connection.RemoteIpAddress.ToString();
+                request.IdCode = _contextAccessor.HttpContext.Request.Cookies[".AspNetCore.Identity.Application"];
 
                 var result = await _contestService.MarkWorkAsync(request);
 

@@ -1,7 +1,7 @@
-import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChildren } from '@angular/core';
+import { IWork } from "../../Models/work";
 import { ContestsService } from "../../services/contests.service";
-import { Utilities } from "../../utils/utilities";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'mark-work-component',
@@ -10,34 +10,40 @@ import { Utilities } from "../../utils/utilities";
 })
 export class MarkWorksComponent implements OnInit {
 
+  public work: IWork;
+  public workId: string;
+  public criterias: any[];
+
   constructor(private contestsService: ContestsService,
-    private router: Router,
-    private utilities: Utilities) {
+    private route: ActivatedRoute,) {
   }
 
-  public isOpen: boolean;
-  @Input() workId: number;
+  @ViewChildren('markInput') marks;
 
-  public addWork(title: string, description: string, source: string) {
+  getWorkDetails() {
+    this.contestsService.GetWorkDetails(this.workId).subscribe(res => {
+      this.work = JSON.parse(res.result);
+    });
+  }
 
-    //let formData: FormData = new FormData();
-    //formData.append('file', this.selectedFile, this.selectedFile.name);
-    //this.contestsService.UploadFile(formData).subscribe(result => {
-    //  console.log(result);
-    //  this.contestsService.CreateWork(title, description, result.result, this.contestId)
-    //    .subscribe(res => {
-    //      console.log(res); this.workCreated.next(true)});
-    //});
+  markWork() {
+    this.marks.forEach(x => {
+      if (x.nativeElement.value !== "") {
+        this.contestsService.MarkWork(this.workId, x.nativeElement.value, x.nativeElement.id)
+          .subscribe(res => this.getWorkDetails());
+      }
+    });
+  }
 
-    //  this.contestsService.CreateContest(title, description, this.utilities.getBoolean(isOpen)).subscribe(response => {
-    //    this.workCreated.next(true);
-    //  }, error => {
-    //      this.workCreated.next(false);
-    //    console.error(error);
-    //  });;
+  getCriterias() {
+    this.contestsService.GetCriterias().subscribe(res => this.criterias = JSON.parse(res.result));
   }
 
   ngOnInit() {
-    
+    this.route.params.subscribe(params => {
+      this.workId = params["id"];
+      this.getWorkDetails();
+      this.getCriterias();
+    });
   }
 }

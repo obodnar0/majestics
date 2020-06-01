@@ -9,16 +9,16 @@
 
   <p *ngIf="!contest"><em>Завантаження...</em></p>
 
-
-
   <ul class="image_gird">
     <li *ngFor="let work of contest.Works" class="gird_element">
-      <img src="{{work.Source}}" class="user-image" />
+      <img src="{{work.Source}}" class="user-image" id="{{work.WorkId}}" style="cursor: pointer;" (click)="openMarker(work)" />
       <h5>{{work.Title}}</h5>
       <h5>{{work.Description}}</h5>
-      <p class="name">{{work.User.FirstName}} {{work.User.LastName}}</p>
+      <p>{{work.User.FirstName}} {{work.User.LastName}}</p>
     </li>
   </ul>
+
+  
 
   <!--<div class="images_gallery">
     <div class="responsive">

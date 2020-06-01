@@ -8,12 +8,12 @@ namespace Majestics.Models.Contest
         public string UserId { get; set; }
 
         [JsonIgnore]
-        public string Ip { get; set; }
+        public string IdCode { get; set; }
 
-        public int CriteriaId { get; set; }
+        public string CriteriaId { get; set; }
 
-        public int WorkId { get; set; }
+        public string WorkId { get; set; }
 
-        public byte Mark { get; set; }
+        public string Mark { get; set; }
     }
 }

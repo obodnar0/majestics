@@ -21,6 +21,7 @@ namespace Majestics.Data
         public DbSet<Contest> Contests { get; set; }
         public DbSet<Work> Works { get; set; }
         public DbSet<Mark> Marks { get; set; }
+        public DbSet<Criteria> Criterias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

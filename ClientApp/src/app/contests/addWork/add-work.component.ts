@@ -35,12 +35,5 @@ export class AddWorksComponent {
         .subscribe(res => {
           console.log(res); this.workCreated.next(true)});
     });
-
-    //  this.contestsService.CreateContest(title, description, this.utilities.getBoolean(isOpen)).subscribe(response => {
-    //    this.workCreated.next(true);
-    //  }, error => {
-    //      this.workCreated.next(false);
-    //    console.error(error);
-    //  });;
   }
 }

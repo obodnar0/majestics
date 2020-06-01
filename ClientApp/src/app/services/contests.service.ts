@@ -33,6 +33,16 @@ export class ContestsService {
     return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/CreateContest', body);
   }
 
+  MarkWork(workId: string, value: string, criteriaId: string) {
+    const body: any = {
+      workId: workId,
+      mark: value,
+      criteriaId: criteriaId,
+    }
+
+    return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/AddMark', body);
+  }
+
   CreateWork(title: string, description: string, source: string, contestId: number) {
     const body: CreateWork = {
       title: title,
@@ -42,6 +52,14 @@ export class ContestsService {
     }
 
     return this.http.post<IApiResponse>(this.baseUrl + 'api/Contest/AddWork', body);
+  }
+
+  GetWorkDetails(workId: string) {
+    return this.http.get<IApiResponse>(this.baseUrl + 'api/Contest/GetWorkDetails?workId=' + workId);
+  }
+
+  GetCriterias() {
+    return this.http.get<IApiResponse>(this.baseUrl + 'api/Contest/GetCriterias');
   }
 
   UploadFile(formData: FormData) {

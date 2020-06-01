@@ -17,7 +17,7 @@ namespace Majestics.Models
 
         public virtual IEnumerable<Mark> Marks { get; set; }
 
-        public UserType? UserType { get; set; }
+        public UserType UserType { get; set; }
 
         public string Institute { get; set; }
 

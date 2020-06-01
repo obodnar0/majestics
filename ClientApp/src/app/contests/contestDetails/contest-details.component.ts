@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContestsService } from "../../services/contests.service";
 import { IContest } from "../../Models/contest";
-import { AddWorksComponent } from "../addWork/add-work.component";
+import { IWork } from "../../Models/work";
 
 @Component({
   selector: 'contest-details-component',
@@ -12,6 +12,7 @@ import { AddWorksComponent } from "../addWork/add-work.component";
 export class ContestDetailsComponent implements OnInit {
   private contestId: number;
   private contest: IContest;
+  public selectedWorkId: string;
 
   public isAdd: boolean;
   addWork() {
@@ -19,13 +20,19 @@ export class ContestDetailsComponent implements OnInit {
   }
 
   constructor(private contestsService: ContestsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   getContestDetails() {
     this.contestsService.GetContest(this.contestId).subscribe(response => {
       this.contest = JSON.parse(response.result);
     }, error => console.error(error));
+  }
+
+  public openMarker(work: IWork) {
+    this.router.navigate(
+      ['/contest/mark', work.WorkId]);
   }
 
   ngOnInit() {

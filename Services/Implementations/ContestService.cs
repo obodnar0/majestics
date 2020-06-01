@@ -1,16 +1,16 @@
 ﻿using Majestics.Data;
 using Majestics.Helpers.Enums;
 using Majestics.Models.Contest;
+using Majestics.Models.Contest.dto;
 using Majestics.Models.Data;
 using Majestics.Models.Users;
 using Majestics.Services.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Majestics.Models.Contest.dto;
-using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace Majestics.Services.Implementations
 {
@@ -32,6 +32,7 @@ namespace Majestics.Services.Implementations
                 {
                     Works = x.Works.Select(q => new WorkViewModel
                     {
+                        WorkId = q.Id,
                         User = new UserViewModel
                         {
                             FirstName = q.User.FirstName,
@@ -40,11 +41,7 @@ namespace Majestics.Services.Implementations
                         },
                         Description = q.Description,
                         Title = q.Title,
-                        AnonMark = q.AnonMark,
-                        AverageMark = q.AverageMark,
-                        JuryMark = q.JuryMark,
-                        Source = q.Source,
-                        UsersMark = q.UsersMark
+                        Source = q.Source
                     }).ToList(),
                     Description = x.Description,
                     Title = x.Title,
@@ -54,29 +51,19 @@ namespace Majestics.Services.Implementations
             return result;
         }
 
+        public async Task<List<Criteria>> GetCriteriasAsync()
+        {
+            return await _dbContext.Criterias.ToListAsync();
+        }
+
         public async Task<List<ContestViewModel>> GetAllContestsAsync()
         {
             var result = await _dbContext.Contests
                 .Include(x => x.Works)
+                .Include(x => x.Users)
                 .Where(x => x.State != ModelState.Deleted)
                 .Select(x => new ContestViewModel
                 {
-                    Works = x.Works.Select(q => new WorkViewModel
-                    {
-                        User = new UserViewModel
-                        {
-                            FirstName = q.User.FirstName,
-                            Institute = q.User.Institute,
-                            LastName = q.User.LastName
-                        },
-                        Description = q.Description,
-                        Title = q.Title,
-                        AnonMark = q.AnonMark,
-                        AverageMark = q.AverageMark,
-                        JuryMark = q.JuryMark,
-                        Source = q.Source,
-                        UsersMark = q.UsersMark
-                    }).ToList(),
                     Description = x.Description,
                     Title = x.Title,
                     ContestId = x.Id
@@ -102,7 +89,7 @@ namespace Majestics.Services.Implementations
                     Source = request.Source,
                     WorkStatus = WorkState.Unmarked
                 });
-                
+
                 await _dbContext.SaveChangesAsync();
 
                 return true;
@@ -134,29 +121,73 @@ namespace Majestics.Services.Implementations
 
         public async Task<bool> MarkWorkAsync(MarkWorkRequest request)
         {
-            var currentUserExistingMark = await _dbContext.Marks.FirstOrDefaultAsync(x => x.WorkId == request.WorkId && 
-                                                                                     x.CriteriaId == request.CriteriaId &&
-                                                                                     (x.Ip == request.Ip || x.UserId == request.UserId));
+            var currentUserExistingMark = await _dbContext.Marks.FirstOrDefaultAsync(x => x.WorkId == int.Parse(request.WorkId) &&
+                                                                                     x.CriteriaId == int.Parse(request.CriteriaId) &&
+                                                                                     (x.IdCode == request.IdCode || x.UserId == request.UserId));
+
+            var currentUserType = (await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == request.UserId))?.UserType;
 
             if (currentUserExistingMark == null)
             {
                 await _dbContext.AddAsync(new Mark
                 {
                     CreationDate = DateTime.Now,
-                    CriteriaId = request.CriteriaId,
-                    Ip = request.Ip,
+                    CriteriaId = int.Parse(request.CriteriaId),
+                    IdCode = request.IdCode,
+                    UserType = currentUserType,
                     State = ModelState.Active,
-                    Value = request.Mark,
-                    WorkId = request.WorkId
+                    Value = byte.Parse(request.Mark),
+                    WorkId = int.Parse(request.WorkId),
+                    UserId = request.UserId
                 });
                 await _dbContext.SaveChangesAsync();
             }
             else
             {
-                currentUserExistingMark.Value = request.Mark;
+                currentUserExistingMark.Value = byte.Parse(request.Mark);
             }
 
             return true;
+        }
+
+        public async Task<WorkViewModel> GetWorkAsync(int workId)
+        {
+            try
+            {
+                var result = await _dbContext.Works
+                    .Include(x => x.User)
+                    .Include(x => x.Marks)
+                    .Where(x => x.Id == workId)
+                    .Select(x => new WorkViewModel
+                    {
+                        User = new UserViewModel
+                        {
+                            FirstName = x.User.FirstName,
+                            Institute = x.User.Institute,
+                            LastName = x.User.LastName
+                        },
+                        Description = x.Description,
+                        Title = x.Title,
+                        Source = x.Source,
+                        WorkId = x.Id
+                    }).FirstOrDefaultAsync();
+
+                var marks = _dbContext.Marks.Where(x => x.WorkId == workId).ToList();
+                var juryMarks = marks.Where(a => a.UserType.HasValue && a.UserType == UserType.Jury).ToList();
+                var userMarks = marks.Where(a => a.UserType.HasValue && a.UserType == UserType.User).ToList();
+                var anonMarks = marks.Where(a => !a.UserType.HasValue).ToList();
+
+                result.AnonMark = anonMarks.Any() ? Convert.ToInt32(anonMarks.Average(x => x.Value)) : 0;
+                result.JuryMark = juryMarks.Any() ? Convert.ToInt32(juryMarks.Average(x => x.Value)) : 0;
+                result.UsersMark = userMarks.Any() ? Convert.ToInt32(userMarks.Average(x => x.Value)) : 0;
+
+                return result;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }
