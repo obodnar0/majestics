@@ -3,12 +3,12 @@ import { Injectable } from "@angular/core";
 
 export interface IWork {
   WorkId: number;
-  source: string;
-  title: string;
-  description: string;
-  anonMark: number;
-  usersMark: number;
-  juryMark: number;
-  averageMark: number;
-  user: IUser;
+  Source: string;
+  Title: string;
+  Description: string;
+  AnonMark: number;
+  UsersMark: number;
+  JuryMark: number;
+  AverageMark: number;
+  User: IUser;
 }

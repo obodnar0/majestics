@@ -7,7 +7,7 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
-
+    <TypeScriptExperimentalDecorators>true</TypeScriptExperimentalDecorators>
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
     <SignAssembly>true</SignAssembly>
@@ -55,10 +55,12 @@
     <None Remove="ClientApp\src\app\utils\utilities.ts" />
     <None Remove="ClientApp\src\assets\images\header\head.jpg" />
     <None Remove="ClientApp\src\assets\images\header\popuga.jpg" />
+    <None Remove="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="ClientApp\src\assets\images\header\head.jpg" />
+    <Content Include="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>

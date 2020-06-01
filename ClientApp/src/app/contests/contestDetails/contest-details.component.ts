@@ -11,7 +11,7 @@ import { IWork } from "../../Models/work";
 })
 export class ContestDetailsComponent implements OnInit {
   private contestId: number;
-  private contest: IContest;
+  public contest: IContest;
   public selectedWorkId: string;
 
   public isAdd: boolean;

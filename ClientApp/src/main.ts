@@ -1,5 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+export * from './app/services/contests.service';
+export * from './app/utils/utilities';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
