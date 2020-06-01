@@ -1,3 +1,32 @@
 .root-block {
     margin: 10px;
 }
+
+.mark{
+    font-size: 30px;
+    text-align: center;
+}
+
+.table{
+    width: 30%;
+}
+
+.mark_m{
+    float: right;
+}
+
+.add_mark {
+  border-radius: 70px;
+  margin-top: 15px;
+  width: 150px;
+  height: 30px;
+  background-color: #2f809a;
+  border-color: #2f809a;
+  color: white;
+}
+
+.add_mark:hover{
+  background-color: #adbce6;
+  color: #18404d;
+  border-color: #adbce6;
+}

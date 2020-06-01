@@ -1,16 +1,53 @@
-﻿<div class="root-block">
+<div class="root-block">
 
   <span *ngIf="!work"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></span>
 
   <h5>{{work.Title}}</h5>
   <h5>{{work.Description}}</h5>
-  <img src="{{work.Source}}" class="user-image"/>
+  <img src="{{work.Source}}" class="user-image" />
   <p>{{work.User.FirstName}} {{work.User.LastName}}</p>
-  <h6>оцінки</h6>
-  <p>Судді: {{work.JuryMark}} Користувачі: {{work.UsersMark}} Анонімна оцінка: {{work.AnonMark}} Середня оцінка: <b>{{work.AverageMark}}</b></p>
-  <div *ngFor="let criteria of criterias">
-    <span><b>{{criteria.Name}}</b> {{criteria.Description}}</span>
-    <input #markInput id="{{criteria.Id}}" type="number" maxlength="3" placeholder="100" />
+  <h6 class="mark">оцінки</h6>
+  <!--<div class="total_mark">
+    <div class="mark_item">Судді: {{work.JuryMark}}</div>
+    <div class="mark_item">Користувачі: {{work.UsersMark}}</div>
+    <div class="mark_item">Анонімна оцінка: {{work.AnonMark}}</div>
+    <div class="mark_item">Середня оцінка: <b>{{work.AverageMark}}</b></div>
+  </div>-->
+  <div class="mark_fild">
+    <div class="input_mark" *ngFor="let criteria of criterias">
+      <table class="table">
+        <tr>
+          <td>
+            <span><b>{{criteria.Name}}</b> {{criteria.Description}}</span>
+          </td>
+          <td>
+            <div class="mark_m">
+              <input #markInput id="{{criteria.Id}}" type="number" maxlength="3" placeholder="100" />
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="mark_table">
+      <table class="table">
+        <tr>
+          <td class="name_rov">Судді:</td>
+          <td>{{work.JuryMark}}</td>
+        </tr>
+        <tr>
+          <td class="name_rov">Користувачі:</td>
+          <td>{{work.UsersMark}}</td>
+        </tr>
+        <tr>
+          <td class="name_rov">Анонімна оцінка:</td>
+          <td>{{work.AnonMark}}</td>
+        </tr>
+        <tr>
+          <td class="name_rov">Середня оцінка:</td>
+          <td>{{work.AverageMark}}</td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <button id="mark-{{work.WorkId}}" (click)="markWork()">Додати оцінку</button>
+  <button id="mark-{{work.WorkId}}" (click)="markWork()" class="add_mark">Додати оцінку</button>
 </div>
