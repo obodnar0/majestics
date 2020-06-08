@@ -1,91 +1,39 @@
-<!--<app-header></app-header>-->
-<div class="main">
-  <h3 class="title">XVII Міжнародний конкурс з веб-дизайну та комп'ютерної графіки</h3>
-  <div class="buttons">
-    <div class="f_button">
-      <button type="button" class="btn btn-dark">Школа</button>
-      <button type="button" class="btn btn-dark">Коледж</button>
-      <button type="button" class="btn btn-dark">ВНЗ</button>
+
+  <div class="main">
+    <h3 class="title">XVII Міжнародний конкурс з веб-дизайну та комп'ютерної графіки</h3>
+    <div class="buttons">
+      <div class="f_button">
+        <button type="button" class="btn btn-dark">Школа</button>
+        <button type="button" class="btn btn-dark">Коледж</button>
+        <button type="button" class="btn btn-dark">ВНЗ</button>
+      </div>
+      <div class="s_button">
+        <button type="button" class="btn btn-light">2D Раст</button>
+        <button type="button" class="btn btn-light">2D Вектор</button>
+        <button type="button" class="btn btn-light">2D Фотоколаж</button>
+        <button type="button" class="btn btn-light">3D</button>
+      </div>
     </div>
-    <div class="s_button">
-      <button type="button" class="btn btn-light">2D Раст</button>
-      <button type="button" class="btn btn-light">2D Вектор</button>
-      <button type="button" class="btn btn-light">2D Фотоколаж</button>
-      <button type="button" class="btn btn-light">3D</button>
+
+    <span *ngIf="!topWorks"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></span>
+
+    <div class="images_gallery">
+      <div class="responsive" *ngFor="let work of topWorks">
+        <div class="gallery">
+          <a target="_blank" href="" class="gallery_image">
+            <img class="picture" src="{{work.Source}}" width="600" height="400">
+          </a>
+          <div class="desc">
+            <p class="art_description"><b>{{work.Title}}</b></p>
+            <p class="Author_name">Автор: {{work.User.FirstName}} {{work.User.LastName}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="show_more">
+      <button type="button" class="btn btn-info">Переглянути Усі</button>
     </div>
   </div>
-  <!--<span class="total">Всього: </span>-->
-  <div class="images_gallery">
-    <div class="responsive">
-      <div class="gallery">
-        <a target="_blank" href="" class="gallery_image">
-            <img class="picture" src="../../assets/images/main/img1.jpg" alt="Cinque Terre" width="600" height="400">
-        </a>
-        <div class="desc">
-          <p class="art_description"><b>Digital Art.</b></p>
-          <p class="Author_name">Author: name</p>
-        </div>
-      </div>
-    </div>
-    <div class="responsive">
-      <div class="gallery">
-        <a target="_blank" href="" class="gallery_image">
-          <img class="picture" src="../../assets/images/main/img2.jpg" alt="Cinque Terre" width="600" height="400">
-        </a>
-        <div class="desc">
-          <p class="art_description"><b>Digital Art.</b></p>
-          <p class="Author_name">Author: name</p>
-        </div>
-      </div>
-    </div>
-    <div class="responsive">
-      <div class="gallery">
-        <a target="_blank" href="" class="gallery_image">
-          <img class="picture" src="../../assets/images/main/img1.jpg" alt="Cinque Terre" width="600" height="400">
-        </a>
-        <div class="desc">
-          <p class="art_description"><b>Digital Art.</b></p>
-          <p class="Author_name">Author: name</p>
-        </div>
-      </div>
-    </div>
-    <div class="responsive">
-      <div class="gallery">
-        <a target="_blank" href="" class="gallery_image">
-          <img class="picture" src="../../assets/images/main/img2.jpg" alt="Cinque Terre" width="600" height="400">
-        </a>
-        <div class="desc">
-          <p class="art_description"><b>Digital Art.</b></p>
-          <p class="Author_name">Author: name</p>
-        </div>
-      </div>
-    </div>
-    <div class="responsive">
-       <div class="gallery">
-         <a target="_blank" href="" class="gallery_image">
-           <img class="picture" src="../../assets/images/main/img1.jpg" alt="Cinque Terre" width="600" height="400">
-         </a>
-         <div class="desc">
-           <p class="art_description"><b>Digital Art.</b></p>
-           <p class="Author_name">Author: name</p>
-         </div>
-       </div>
-    </div>
-    <div class="responsive">
-    <div class="gallery">
-      <a target="_blank" href="" class="gallery_image">
-        <img class="picture" src="../../assets/images/main/img2.jpg" alt="Cinque Terre" width="600" height="400">
-      </a>
-      <div class="desc">
-        <p class="art_description"><b>Digital Art.</b></p>
-        <p class="Author_name">Author: name</p>
-      </div>
-    </div>
-    </div>
-    <div class="clearfix"></div>
-  </div>
-  <div class="show_more">
-    <button type="button" class="btn btn-info">Переглянути Усі</button>
-  </div>
-</div>
-<!--<app-footer></app-footer>-->
+

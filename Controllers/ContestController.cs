@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using IdentityServer4.Extensions;
 using Majestics.Models.Common;
+using Majestics.Models.Data;
 using Majestics.Services.Abstractions;
 using Microsoft.AspNetCore.Http;
 using ActionResult = Majestics.Models.Common.ActionResult;
@@ -61,11 +62,42 @@ namespace Majestics.Controllers
 
         [HttpGet("GetCriterias")]
         [AllowAnonymous]
-        public async Task<ActionResult> GetCriterias()
+        public async Task<ActionResult> GetCriterias(int contestId)
         {
             try
             {
-                var result = await _contestService.GetCriteriasAsync();
+                var result = await _contestService.GetCriteriasAsync(contestId);
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex);
+            }
+        }
+
+        [HttpPost("AddCriteria")]
+        public async Task<ActionResult> AddCriterion([FromBody]AddCriteria criteria)
+        {
+            try
+            {
+                var result = await _contestService.AddCriterion(criteria);
+
+                return Result.Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex);
+            }
+        } 
+        
+        [HttpGet("TopRated")]
+        [AllowAnonymous]
+        public async Task<ActionResult> GetTopRatedWorks()
+        {
+            try
+            {
+                var result = await _contestService.GetTopWorks();
 
                 return Result.Ok(result);
             }

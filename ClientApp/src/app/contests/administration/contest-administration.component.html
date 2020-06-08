@@ -1,0 +1,40 @@
+<div class="root-block">
+  <div class="top_block">
+    <h6>Критерії</h6>
+    <div class="button_top">
+      <button (click)="addCriteria()" style="border-radius: 70px; width: 170px; height: 50px; background-color: #2f809a; border-color: #2f809a; color: white; text-transform: uppercase; margin: 0px 20px 10px;">Додати критерію</button>
+      <div *ngIf="isCriteriaAdd">
+        <div class="root-block">
+          <h2>Створення критерії</h2>
+          <div class="form-group">
+            <label for="criteriaName">Назва</label>
+            <input #criteriaName type="text" class="form-control" id="criteriaName" required>
+          </div>
+          <div class="form-group">
+            <label for="criteriaDescription">Опис</label>
+            <input #criteriaDesc type="text" class="form-control" id="criteriaDescription">
+          </div>
+          <button (click)="addNewCriteria(criteriaName.value, criteriaDesc.value)" type="submit" class="btn btn-success">Створити</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p *ngIf="!criterias"><em>Завантаження...</em></p>
+    <table class='table table-hover' aria-labelledby="tableLabel" *ngIf="criterias">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Назва</th>
+          <th scope="col">Опис</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let criteria of criterias">
+          <td style="width: 30%;">{{ criteria.Name }}</td>
+          <td>{{ criteria.Description }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

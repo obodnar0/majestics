@@ -6,8 +6,9 @@
       <span class="user">{{ userName | async }}</span>
       <label for="profile2"><i class="mdi mdi-menu"></i></label>
       <ul>
-        <li><a class="dropdown-item" [routerLink]='["/authentication/profile"]' title="Manage"><i class="mdi mdi-account"></i>Аккаунт</a></li>
+        <li><a class="dropdown-item" [routerLink]='["/authentication/profile"]' title="Manage"><i class="mdi mdi-account"></i>Акаунт</a></li>
         <li><a class="dropdown-item" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout"><i class="mdi mdi-logout"></i>Вийти</a></li>
+        <li><a class="dropdown-item" [routerLink]='["/info"]' [state]='{ local: true }' title="Info"><i class="mdi mdi-logout"></i>Інформація</a></li>
       </ul>
     </label>
   </div>

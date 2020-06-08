@@ -8,7 +8,6 @@ using Majestics.Services.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -51,9 +50,32 @@ namespace Majestics.Services.Implementations
             return result;
         }
 
-        public async Task<List<Criteria>> GetCriteriasAsync()
+        public async Task<List<Criteria>> GetCriteriasAsync(int contestId)
         {
-            return await _dbContext.Criterias.ToListAsync();
+            return await _dbContext.Criterias
+                .Where(x => x.ContestId == contestId)
+                .ToListAsync();
+        }
+
+        public async Task<bool> AddCriterion(AddCriteria criteria)
+        {
+            try
+            {
+                _dbContext.Criterias.Add(new Criteria
+                {
+                    ContestId = int.Parse(criteria.ContestId),
+                    Description = criteria.Description,
+                    Name = criteria.Name
+                });
+
+                await _dbContext.SaveChangesAsync();
+                 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public async Task<List<ContestViewModel>> GetAllContestsAsync()
@@ -70,6 +92,28 @@ namespace Majestics.Services.Implementations
                 }).ToListAsync();
 
             return result;
+        }
+
+        public async Task<List<WorkViewModel>> GetTopWorks()
+        {
+            return await _dbContext.Works   
+                .OrderByDescending(x => x.Marks.Average(q => q.Value))
+                .Take(8)
+                .Where(x => x.State == ModelState.Active)
+                .Select(x => new WorkViewModel
+            {
+                    User = new UserViewModel
+                    {
+                        FirstName = x.User.FirstName,
+                        Institute = x.User.Institute,
+                        LastName = x.User.LastName
+                    },
+                    Description = x.Description,
+                    ContestId = x.ContestId,
+                    Title = x.Title,
+                    Source = x.Source,
+                    WorkId = x.Id
+                }).ToListAsync();
         }
 
         public async Task<bool> AddWorkAsync(AddWorkRequest request)
@@ -123,6 +167,7 @@ namespace Majestics.Services.Implementations
         {
             var currentUserExistingMark = await _dbContext.Marks.FirstOrDefaultAsync(x => x.WorkId == int.Parse(request.WorkId) &&
                                                                                      x.CriteriaId == int.Parse(request.CriteriaId) &&
+                                                                                     x.State == ModelState.Active &&
                                                                                      (x.IdCode == request.IdCode || x.UserId == request.UserId));
 
             var currentUserType = (await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == request.UserId))?.UserType;
@@ -157,7 +202,7 @@ namespace Majestics.Services.Implementations
                 var result = await _dbContext.Works
                     .Include(x => x.User)
                     .Include(x => x.Marks)
-                    .Where(x => x.Id == workId)
+                    .Where(x => x.Id == workId && x.State == ModelState.Active)
                     .Select(x => new WorkViewModel
                     {
                         User = new UserViewModel
@@ -167,6 +212,7 @@ namespace Majestics.Services.Implementations
                             LastName = x.User.LastName
                         },
                         Description = x.Description,
+                        ContestId = x.ContestId,
                         Title = x.Title,
                         Source = x.Source,
                         WorkId = x.Id

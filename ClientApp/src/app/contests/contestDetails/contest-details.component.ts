@@ -15,6 +15,8 @@ export class ContestDetailsComponent implements OnInit {
   public selectedWorkId: string;
 
   public isAdd: boolean;
+  public isAdminOpen: boolean;
+
   addWork() {
     this.isAdd = !this.isAdd;
   }
@@ -22,6 +24,10 @@ export class ContestDetailsComponent implements OnInit {
   constructor(private contestsService: ContestsService,
     private route: ActivatedRoute,
     private router: Router) {
+  }
+
+  public openAdministrationPanel() {
+    this.isAdminOpen = !this.isAdminOpen;
   }
 
   getContestDetails() {

@@ -47,11 +47,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\Models\contest.ts" />
+    <None Remove="ClientApp\src\app\Models\criteria.ts" />
     <None Remove="ClientApp\src\app\Models\Mark.ts" />
     <None Remove="ClientApp\src\app\Models\response.ts" />
     <None Remove="ClientApp\src\app\Models\user.ts" />
     <None Remove="ClientApp\src\app\Models\work.ts" />
     <None Remove="ClientApp\src\app\services\contests.service.ts" />
+    <None Remove="ClientApp\src\app\services\users.service.ts" />
     <None Remove="ClientApp\src\app\utils\utilities.ts" />
     <None Remove="ClientApp\src\assets\images\header\head.jpg" />
     <None Remove="ClientApp\src\assets\images\header\popuga.jpg" />
@@ -70,6 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\criteria.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\mark.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -81,8 +84,15 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\Models\contest.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\users.service.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="ClientApp\src\app\services\contests.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\utils\utilities.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\contests\addWork\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

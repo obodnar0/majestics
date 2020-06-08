@@ -21,6 +21,8 @@ import { AddContestsComponent } from "./contests/addContest/add-contest.componen
 import { ContestDetailsComponent } from "./contests/contestDetails/contest-details.component";
 import { AddWorksComponent } from "./contests/addWork/add-work.component";
 import { MarkWorksComponent } from "./contests/markWork/mark-work.component";
+import { ContestAdministration } from "./contests/administration/contest-administration.component";
+import { UserInfoComponent } from "./user/user-info/user-info.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MarkWorksComponent } from "./contests/markWork/mark-work.component";
     InfoWindowComponent,
     AddContestsComponent,
     AddWorksComponent,
-    MarkWorksComponent
+    ContestAdministration,
+    MarkWorksComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -49,7 +53,8 @@ import { MarkWorksComponent } from "./contests/markWork/mark-work.component";
       { path: 'contests', component: ContestsComponent },
       { path: 'contest/:id', component: ContestDetailsComponent },
       { path: 'contest/mark/:id', component: MarkWorksComponent },
-      { path: 'info', component: InfoWindowComponent },
+      { path: 'contest/administration', component: ContestAdministration },
+      { path: 'info', component: UserInfoComponent },
       //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
   ],

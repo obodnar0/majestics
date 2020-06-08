@@ -14,5 +14,7 @@ namespace Majestics.Models.Contest.dto
         public IEnumerable<UserContest> Users { get; set; }
 
         public ICollection<Work> Works { get; set; }
+
+        public ICollection<Criteria> Criterias { get; set; }
     }
 }

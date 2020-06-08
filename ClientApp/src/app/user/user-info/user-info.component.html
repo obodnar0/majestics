@@ -1,0 +1,40 @@
+<div class="root-block">
+  <h2>Персональні дані</h2>
+  <div class="form-group">
+    <label for="name">Ім'я</label>
+    <input #name type="text" class="form-control" value="{{user.Name}}" id="name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="surname">Фамілія</label>
+    <input #surname type="text" class="form-control" value="{{user.Surname}}" id="surname">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Номер телефону</label>
+    <input #phone type="text" class="form-control" value="{{user.Phone}}" id="phone">
+  </div>
+
+  <div class="form-group">
+    <label for="address">Адреса</label>
+    <input #address type="text" class="form-control" value="{{user.Address}}" id="address">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Електронна адреса</label>
+    <input #email type="email" class="form-control" value="{{user.Email}}" id="email">
+  </div>
+
+  <div class="form-group">
+    <label for="institution">Навчальний заклад</label>
+    <input #institution type="text" class="form-control" value="{{user.Institution}}" id="institution">
+  </div>
+
+  <div class="form-group">
+    <label for="institution">Дата народження</label>
+    <input #birthDate type="date" class="form-control" value="{{user.BirthDate}}" id="birthDate">
+  </div>
+
+  <button (click)="saveUserInfo(name.value, surname.value, phone.value, address.value, email.value, institution.value, birthDate.value)" type="submit" class="btn btn-success">Зберегти</button>
+</div>
+

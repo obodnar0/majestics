@@ -6,6 +6,8 @@ namespace Majestics.Models.Contest
     {
         public int WorkId { get; set; }
 
+        public int ContestId { get; set; }
+
         public string Source { get; set; }
 
         public string Title { get; set; }

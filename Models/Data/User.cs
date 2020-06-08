@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using Majestics.Helpers.Enums;
 using Majestics.Models.Data;
@@ -24,5 +25,13 @@ namespace Majestics.Models
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Address { get; set; }
+
+        public string Email { get; set; }
+
+        public DateTime BirthDate { get; set; }
     }
 }

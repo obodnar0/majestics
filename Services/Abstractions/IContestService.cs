@@ -11,9 +11,13 @@ namespace Majestics.Services.Abstractions
 
         Task<ContestViewModel> GetContestAsync(int contestId);
 
-        Task<List<Criteria>> GetCriteriasAsync();
+        Task<List<Criteria>> GetCriteriasAsync(int contestId);
+
+        Task<bool> AddCriterion(AddCriteria criteria);
 
         Task<WorkViewModel> GetWorkAsync(int workId);
+
+        Task<List<WorkViewModel>> GetTopWorks();
 
         Task<bool> AddWorkAsync(AddWorkRequest request);
 

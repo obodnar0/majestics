@@ -88,6 +88,7 @@ namespace Majestics
             s.AddTransient<IFeedService, FeedService>();
             s.AddTransient<IDataService, DataService>();
             s.AddTransient<IContestService, ContestService>();
+            s.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

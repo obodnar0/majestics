@@ -71,6 +71,11 @@ namespace Majestics.Data
                 .HasOne(bc => bc.Work)
                 .WithMany(b => b.Marks)
                 .HasForeignKey(c => c.WorkId);
+
+            modelBuilder.Entity<Criteria>()
+                .HasOne(bc => bc.Contest)
+                .WithMany(b => b.Criterias)
+                .HasForeignKey(c => c.ContestId);
         }
     }
 }
