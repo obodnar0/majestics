@@ -55,6 +55,7 @@ import { UserInfoComponent } from "./user/user-info/user-info.component";
       { path: 'contest/mark/:id', component: MarkWorksComponent },
       { path: 'contest/administration', component: ContestAdministration },
       { path: 'info', component: UserInfoComponent },
+      { path: 'about', component: InfoWindowComponent }
       //{ path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
     ])
   ],
